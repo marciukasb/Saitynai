@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="LoginContext-Web.config Connection String" description="LoginContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=LoginContext-20170423212416; Integrated Security=True; MultipleActiveResultSets=True; AttachDbFilename=|DataDirectory|LoginContext-20170423212416.mdf" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Martynas\\Documents\\pnamas\\KTUMongoStack\\MongoStack\\MongoStack\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='LoginContext']/@connectionString" />
+  </parameter>
+</parameters>

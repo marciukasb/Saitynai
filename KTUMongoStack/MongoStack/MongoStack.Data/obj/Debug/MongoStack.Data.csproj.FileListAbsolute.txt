@@ -1,0 +1,93 @@
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Data.dll.config
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Data.dll
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Data.pdb
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\DnsClient.dll
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Bson.dll
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Driver.dll
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Core.dll
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.ServiceInterface.dll
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\System.Buffers.dll
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.ServiceInterface.dll
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.dll
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.Common.dll
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.Text.dll
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Core.pdb
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Core.dll.config
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.ServiceInterface.pdb
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.ServiceInterface.dll.config
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\DnsClient.xml
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Bson.xml
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Driver.xml
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Driver.Core.xml
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.xml
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.Common.xml
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.Text.xml
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\obj\Debug\MongoStack.Data.csprojAssemblyReference.cache
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\obj\Debug\MongoStack.Data.csproj.CoreCompileInputs.cache
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\obj\Debug\MongoStack.Data.csproj.CopyComplete
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\obj\Debug\MongoStack.Data.dll
+C:\Users\Martynas\Documents\pnamas\MongoStack\MongoStack\MongoStack.Data\obj\Debug\MongoStack.Data.pdb
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Data.dll.config
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Data.dll
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Data.pdb
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\DnsClient.dll
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Bson.dll
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Driver.dll
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Core.dll
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.ServiceInterface.dll
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\System.Buffers.dll
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.ServiceInterface.dll
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.dll
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.Common.dll
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.Text.dll
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Core.pdb
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Core.dll.config
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.ServiceInterface.pdb
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.ServiceInterface.dll.config
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\DnsClient.xml
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Bson.xml
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Driver.xml
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Driver.Core.xml
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.xml
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.Common.xml
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.Text.xml
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\obj\Debug\MongoStack.Data.csprojAssemblyReference.cache
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\obj\Debug\MongoStack.Data.csproj.CoreCompileInputs.cache
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\obj\Debug\MongoStack.Data.csproj.CopyComplete
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\obj\Debug\MongoStack.Data.dll
+C:\Users\Martynas\Desktop\To save\MongoStack\MongoStack\MongoStack.Data\obj\Debug\MongoStack.Data.pdb
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Data.dll.config
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Data.dll
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Data.pdb
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\DnsClient.dll
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Bson.dll
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Driver.dll
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Core.dll
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.ServiceInterface.dll
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\System.Buffers.dll
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.ServiceInterface.dll
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.Common.dll
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.dll
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.Text.dll
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Core.pdb
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.Core.dll.config
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.ServiceInterface.pdb
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoStack.ServiceInterface.dll.config
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\DnsClient.xml
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Bson.xml
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Driver.xml
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\MongoDB.Driver.Core.xml
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.Common.xml
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.xml
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\bin\Debug\ServiceStack.Text.xml
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\obj\Debug\MongoStack.Data.csprojAssemblyReference.cache
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\obj\Debug\MongoStack.Data.csproj.CoreCompileInputs.cache
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\obj\Debug\MongoStack.Data.csproj.CopyComplete
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\obj\Debug\MongoStack.Data.dll
+C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.Data\obj\Debug\MongoStack.Data.pdb
