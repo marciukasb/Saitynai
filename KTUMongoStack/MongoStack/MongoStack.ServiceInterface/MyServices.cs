@@ -1,13 +1,12 @@
 ﻿using MongoStack.ServiceInterface.Interfaces;
 using ServiceStack.ServiceInterface;
-using System.Security.Cryptography;
 using MongoStack.Core.DTOs;
-using MongoDB.Driver;
 using System.Linq;
-using System;
 using ServiceStack.Common.Web;
 using System.Net;
 using MongoStack.Core;
+using MongoStack.Core.Entities;
+using System.Web;
 
 namespace MongoStack.ServiceInterface
 {
@@ -30,41 +29,16 @@ namespace MongoStack.ServiceInterface
 
         #region Users
 
-        public object Post(IsAdmin request)
-        {
-            if (JsonWebToken.Decode(request.Token, request.Username))
-            {
-                var result = iuserservice.GetUserByUsername(request.Username);
-                if (result.Success && result.Entity.Role == "Admin")
-                {
-                    return new AuthoriseResponse { Result = true };
-                }
-                else
-                {
-                    return new AuthoriseResponse { Result = false };
-                }
-            }
-            else
-            {
-                return new AuthoriseResponse { Result = false };
-            }
-        }
-
-        public object Post(Authenticate request)
-        {
+       public object Post(Authenticate request)
+       {
             var jwt = JsonWebToken.Encode(request, JwtHashAlgorithm.HS512);
-            var credentials = Helper.GenerateToken(request.Username, request.Password);
             var result = iuserservice.GetUserByUsername(request.Username);
 
             if (result.Success)
             {
-                var hashparts = result.Entity.Password.Split(':');
-                string hash;
-                using (MD5 md5Hash = MD5.Create())
-                {
-                    hash = Helper.GetMd5Hash(md5Hash, request.Password + hashparts[1]);
-                }
-                if (hash == hashparts[0])
+                var passEncrypt = Helper.MD5Hash(request.Password);
+
+                if (result.Entity.Password == passEncrypt)
                 {
                     return new AuthResponse { Token = jwt, Role = result.Entity.Role };
                 }
@@ -75,41 +49,42 @@ namespace MongoStack.ServiceInterface
             }
             return new AuthResponse { Token = null };
         }
-
-        public object Post(GetUser request)
+        
+        public object Post(CreateUser request)
         {
-            if (JsonWebToken.Decode(request.Token, request.UserName))
-            {
-                var result = iuserservice.GetUserByUsername(request.UserName);
-                if (result.Success)
-                {
-                    return new UserResponse { Result = true, User = result.Entity };
-                }
-                return new UserResponse { Result = false };
-            }
-            else
-            {
-                return new UserResponse { Result = false };
-            }
-        }
+            var result = iuserservice.GetUserByUsername(request.UserName);
 
-        public object Post(GetAllUsers request)
-        {
-            if (request.Token != null && JsonWebToken.Decode(request.Token, request.Username))
+            if (!result.Success && result.Entity == null)
             {
-                var user = iuserservice.GetAllUsers();
-                if (user.Success)
-                {
-                    return new UsersResponse { Result = false };
-                }
-                return new UserResponse { Result = false };
-            }
-            else
-            {
-                return new UserResponse { Result = false };
-            }
-        }
+                var passEncrypt = Helper.MD5Hash(request.Password);
 
+                try
+                {
+                    var user = iuserservice.CreateUser(new User
+                    {
+                        Username = request.UserName,
+                        Password = passEncrypt,
+                        FirstName = request.FirstName,
+                        LastName = request.LastName,
+                        Email = request.Email,
+                    });
+                    if (!user.Success) return new HttpError(HttpStatusCode.InternalServerError, "An error occurred");
+
+                    var obj = new TokenData {Username = request.UserName, Password = request.Password};
+                    var jwt = JsonWebToken.Encode(obj, JwtHashAlgorithm.HS512);
+                    return new AuthResponse {Token = jwt};
+                }
+                catch
+                {
+                    return new HttpError(HttpStatusCode.InternalServerError, "An error occurred");
+                }
+            }
+            if (result.Success && result.Entity != null)
+            {
+                return new HttpError(HttpStatusCode.BadRequest, "Username already exists");
+            }
+            return new AuthResponse { Token = null };
+        }
 
         #endregion
 
@@ -175,7 +150,7 @@ namespace MongoStack.ServiceInterface
             {
                 icategoryService.UpdateCategory(request.Category);
             }
-            catch (Exception ex)
+            catch
             {
                 return null;
 
@@ -189,14 +164,21 @@ namespace MongoStack.ServiceInterface
 
         #region Products
 
+
         public object Get(GetProducts request)
         {
+            var aspnetRequest = (HttpRequest)base.Request.OriginalRequest;
+            var headerValue = aspnetRequest.Headers["apikey"];
+            if (headerValue == null || !JsonWebToken.Decode(headerValue, iuserservice))
+            {
+            }
+
             var result = iproductservice.GetAllProducts();
             if (!string.IsNullOrEmpty(result.Message))
             {
                 return StatusCode(result);
             }
-            else if (result.Entities.Count() == 0)
+            if (!result.Entities.Any())
             {
                 return HttpError.NotFound("Not Found");
             }
@@ -220,6 +202,8 @@ namespace MongoStack.ServiceInterface
 
         public object Post(AddProduct request)
         {
+        //    var headerValue = base.Request.Headers["apikey"];
+
             var result = iproductservice.CreateProduct(request);
 
             if (!string.IsNullOrEmpty(result.Message))

@@ -2,7 +2,6 @@
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { AlertService, UserService } from '../_services';
 
 @Component({templateUrl: 'register.component.html'})
@@ -41,9 +40,10 @@ export class RegisterComponent implements OnInit {
         this.userService.register(this.registerForm.value)
             .pipe(first())
             .subscribe(
-                data => {
+                user => {
+                    localStorage.setItem('currentUser', user.Token);
                     this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/login']);
+                    this.router.navigate(['/home']);
                 },
                 error => {
                     this.alertService.error(error);

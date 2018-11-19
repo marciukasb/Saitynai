@@ -28,8 +28,7 @@ namespace MongoStack.Core.Entities
 
     public class TokenData
     {
-        public string Id { get; set; }
         public string Username { get; set; }
-        public DateTime CreationDate { get; set; }
+        public string Password { get; set; }
     }
 }

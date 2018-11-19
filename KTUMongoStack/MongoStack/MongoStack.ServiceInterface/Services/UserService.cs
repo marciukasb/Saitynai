@@ -43,14 +43,14 @@ namespace MongoStack.ServiceInterface.Services
         public ResultWithEntity<User> CreateUser(User user)
         {
             var result = GetUserByUsername(user.Username);
-            if (!result.Success)
-            {
-                return new ResultWithEntity<User>
-                {
-                    Success = false,
-                    Message = result.Message
-                };
-            }
+            //if (!result.Success)
+            //{
+            //    return new ResultWithEntity<User>
+            //    {
+            //        Success = false,
+            //        Message = result.Message
+            //    };
+            //}
 
             if(result.Entity == null)
             {
@@ -61,7 +61,8 @@ namespace MongoStack.ServiceInterface.Services
                 return new ResultWithEntity<User>
                 {
                     Success= false,
-                    Message = string.Format("Gebruikersnaam bestaat al")
+                    Message = "User already exists",
+
                 };
             }
         }

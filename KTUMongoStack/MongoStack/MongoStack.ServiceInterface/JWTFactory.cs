@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Security.Cryptography;
 using System.Text;
 using MongoStack.Core.Entities;
+using MongoStack.ServiceInterface.Interfaces;
 
 namespace MongoStack.ServiceInterface
 {
@@ -18,10 +19,12 @@ namespace MongoStack.ServiceInterface
 
     public class JsonWebToken
     {
-        private static Dictionary<JwtHashAlgorithm, Func<byte[], byte[], byte[]>> HashAlgorithms;
+        private static readonly Dictionary<JwtHashAlgorithm, Func<byte[], byte[], byte[]>> HashAlgorithms;
+
 
         static JsonWebToken()
         {
+
             HashAlgorithms = new Dictionary<JwtHashAlgorithm, Func<byte[], byte[], byte[]>>
             {
                 { JwtHashAlgorithm.RS256, (key, value) => { using (var sha = new HMACSHA256(key)) { return sha.ComputeHash(value); } } },
@@ -57,12 +60,12 @@ namespace MongoStack.ServiceInterface
             return string.Join(".", segments.ToArray());
         }
 
-        public static bool Decode(string token, string username)
+        public static bool Decode(string token, IUserService iuserservice)
         {
-            return Decode(token, true, username);
+            return Decode(token, true, iuserservice);
         }
 
-        public static bool Decode(string token, bool verify, string username)
+        public static bool Decode(string token, bool verify, IUserService iuserservice)
         {
             var key = ConfigurationManager.AppSettings["Secret"];
             var parts = token.Split('.');
@@ -76,7 +79,9 @@ namespace MongoStack.ServiceInterface
             var payloadData = JObject.Parse(payloadJson);
 
             var payloadObject = payloadData.ToObject<User>();
-            if(payloadObject.Username != username)
+            var userFromDb = iuserservice.GetUserByUsername(payloadObject.Username);
+
+            if (payloadObject.Username != userFromDb.Entity.Username)
             {
                 return false;
             }
@@ -129,7 +134,7 @@ namespace MongoStack.ServiceInterface
                 case 0: break; 
                 case 2: output += "=="; break;
                 case 3: output += "="; break; 
-                default: throw new System.Exception("Illegal base64url string!");
+                default: throw new Exception("Illegal base64url string!");
             }
             var converted = Convert.FromBase64String(output); 
             return converted;
