@@ -24,7 +24,6 @@ namespace MongoStack.ServiceInterface
 
         static JsonWebToken()
         {
-
             HashAlgorithms = new Dictionary<JwtHashAlgorithm, Func<byte[], byte[], byte[]>>
             {
                 { JwtHashAlgorithm.RS256, (key, value) => { using (var sha = new HMACSHA256(key)) { return sha.ComputeHash(value); } } },
@@ -35,15 +34,9 @@ namespace MongoStack.ServiceInterface
 
         public static string Encode(object payload, JwtHashAlgorithm algorithm)
         {
-            string key = ConfigurationManager.AppSettings["Secret"];
-            return Encode(payload, Encoding.UTF8.GetBytes(key), algorithm);
-        }
-
-        public static string Encode(object payload, byte[] keyBytes, JwtHashAlgorithm algorithm)
-        {
+            var key = ConfigurationManager.AppSettings["Secret"];
             var segments = new List<string>();
             var header = new { alg = algorithm.ToString(), typ = "JWT" };
-
             byte[] headerBytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(header, Formatting.None));
             byte[] payloadBytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(payload, Formatting.None));
 
@@ -54,7 +47,7 @@ namespace MongoStack.ServiceInterface
 
             var bytesToSign = Encoding.UTF8.GetBytes(stringToSign);
 
-            byte[] signature = HashAlgorithms[algorithm](keyBytes, bytesToSign);
+            byte[] signature = HashAlgorithms[algorithm](Encoding.UTF8.GetBytes(key), bytesToSign);
             segments.Add(Base64UrlEncode(signature));
 
             return string.Join(".", segments.ToArray());

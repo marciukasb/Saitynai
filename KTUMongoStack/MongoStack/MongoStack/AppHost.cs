@@ -6,7 +6,6 @@ using ServiceStack.Mvc;
 using MongoStack.Data;
 using MongoStack.ServiceInterface.Interfaces;
 using Autofac;
-using MongoStack.App_Start;
 using ServiceStack.Configuration;
 using ServiceStack.ServiceInterface.Validation;
 using ServiceStack.FluentValidation;

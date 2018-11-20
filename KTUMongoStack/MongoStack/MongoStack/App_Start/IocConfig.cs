@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using ServiceStack.Configuration;
 
-namespace MongoStack.App_Start
+namespace MongoStack
 {
     public class AutofacIocAdapter : IContainerAdapter
     {
@@ -19,14 +19,7 @@ namespace MongoStack.App_Start
 
         public T TryResolve<T>()
         {
-            T result;
-
-            if (container.TryResolve<T>(out result))
-            {
-                return result;
-            }
-
-            return default(T);
+            return container.TryResolve<T>(out var result) ? result : default(T);
         }
     }
 }

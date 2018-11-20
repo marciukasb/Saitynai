@@ -140,6 +140,7 @@ C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.Core\bi
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.Core\bin\Debug\System.Web.WebPages.xml
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.Core\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.Core\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.Core\obj\Debug\MongoStack.Core.csprojAssemblyReference.cache
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.Core\obj\Debug\MongoStack.Core.csproj.CoreCompileInputs.cache
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.Core\obj\Debug\MongoStack.Core.csproj.CopyComplete
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.Core\obj\Debug\MongoStack.Core.dll
