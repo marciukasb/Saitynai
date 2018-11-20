@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 user => {
-                    localStorage.setItem('currentUser', user.Token);
+                    localStorage.setItem('currentUser', JSON.stringify(user));
                     this.alertService.success('Registration successful', true);
                     this.router.navigate(['/home']);
                 },

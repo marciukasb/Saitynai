@@ -1,12 +1,11 @@
-﻿using MongoStack.ServiceInterface.Interfaces;
-using ServiceStack.ServiceInterface;
-using MongoStack.Core.DTOs;
-using System.Linq;
-using ServiceStack.Common.Web;
+﻿using System.Linq;
 using System.Net;
 using MongoStack.Core;
+using MongoStack.Core.DTOs;
 using MongoStack.Core.Entities;
-using System.Web;
+using MongoStack.ServiceInterface.Interfaces;
+using ServiceStack.Common.Web;
+using ServiceStack.ServiceInterface;
 
 namespace MongoStack.ServiceInterface
 {
@@ -18,9 +17,7 @@ namespace MongoStack.ServiceInterface
         private readonly IProductService iproductservice;
         private readonly IUserService iuserservice;
 
-        public MyServices(ICategoryService icategoryService,
-                          IProductService iproductservice,
-                          IUserService iuserservice)
+        public MyServices(ICategoryService icategoryService, IProductService iproductservice, IUserService iuserservice)
         {
             this.icategoryService = icategoryService;
             this.iproductservice = iproductservice;
@@ -29,27 +26,24 @@ namespace MongoStack.ServiceInterface
 
         #region Users
 
-       public object Post(Authenticate request)
-       {
+        public object Post(Authenticate request)
+        {
             var jwt = JsonWebToken.Encode(request, JwtHashAlgorithm.HS512);
             var result = iuserservice.GetUserByUsername(request.Username);
 
-            if (result.Success)
-            {
-                var passEncrypt = Helper.MD5Hash(request.Password);
+            if (!result.Success && string.IsNullOrEmpty(result.Message)) return new HttpError(HttpStatusCode.Forbidden, "Username does not exist");
+            if (!result.Success && !string.IsNullOrEmpty(result.Message)) return StatusCode(result);
 
-                if (result.Entity.Password == passEncrypt)
-                {
-                    return new AuthResponse { Token = jwt, Role = result.Entity.Role };
-                }
-                else
-                {
-                    return new AuthResponse { Token = null };
-                }
+            var passEncrypt = Helper.MD5Hash(request.Password);
+            if (result.Entity.Password == passEncrypt)
+            {
+                return new AuthResponse {Token = jwt, Role = result.Entity.Role};
             }
-            return new AuthResponse { Token = null };
+
+            return new HttpError(HttpStatusCode.Forbidden, "Incorrect password");
+
         }
-        
+
         public object Post(CreateUser request)
         {
             var result = iuserservice.GetUserByUsername(request.UserName);
@@ -66,7 +60,7 @@ namespace MongoStack.ServiceInterface
                         Password = passEncrypt,
                         FirstName = request.FirstName,
                         LastName = request.LastName,
-                        Email = request.Email,
+                        Email = request.Email
                     });
                     if (!user.Success) return new HttpError(HttpStatusCode.InternalServerError, "An error occurred");
 
@@ -167,11 +161,8 @@ namespace MongoStack.ServiceInterface
 
         public object Get(GetProducts request)
         {
-            var aspnetRequest = (HttpRequest)base.Request.OriginalRequest;
-            var headerValue = aspnetRequest.Headers["apikey"];
-            if (headerValue == null || !JsonWebToken.Decode(headerValue, iuserservice))
-            {
-            }
+            if (Request.Headers["Authorization"] == null || !JsonWebToken.Decode(Request.Headers["Authorization"], iuserservice))
+                return new HttpError(HttpStatusCode.Forbidden, "Invalid token");
 
             var result = iproductservice.GetAllProducts();
             if (!string.IsNullOrEmpty(result.Message))
@@ -187,13 +178,17 @@ namespace MongoStack.ServiceInterface
 
         public object Get(GetProduct request)
         {
+            if (Request.Headers["Authorization"] == null || !JsonWebToken.Decode(Request.Headers["Authorization"], iuserservice))
+                return new HttpError(HttpStatusCode.Forbidden, "Invalid token");
+
             if (request.Id?.Length != 24) return new HttpError(HttpStatusCode.BadRequest, "Bad Request");
             var result = iproductservice.GetProductById(request.Id);
             if (!string.IsNullOrEmpty(result.Message))
             {
                 return StatusCode(result);
             }
-            else if (result.Entity == null)
+
+            if (result.Entity == null)
             {
                 return HttpError.NotFound("Not Found");
             }
@@ -202,43 +197,33 @@ namespace MongoStack.ServiceInterface
 
         public object Post(AddProduct request)
         {
-        //    var headerValue = base.Request.Headers["apikey"];
+            if (Request.Headers["Authorization"] == null || !JsonWebToken.Decode(Request.Headers["Authorization"], iuserservice))
+                return new HttpError(HttpStatusCode.Forbidden, "Invalid token");
 
             var result = iproductservice.CreateProduct(request);
+            if (!string.IsNullOrEmpty(result.Message)) return StatusCode(result);
 
-            if (!string.IsNullOrEmpty(result.Message))
-            {
-                return StatusCode(result);
-            }
-            else if (result.Entity == null)
-            {
-                return new HttpError(HttpStatusCode.BadRequest, "BadRequest");
-            }
-            return new HttpError(HttpStatusCode.Created, "Created", result.Entity.Id);
+            return result.Entity == null ? new HttpError(HttpStatusCode.BadRequest, "BadRequest") : new HttpError(HttpStatusCode.Created, "Created", result.Entity.Id);
         }
-
-     
 
         public object Delete(DeleteProduct request)
         {
+            if (Request.Headers["Authorization"] == null || !JsonWebToken.Decode(Request.Headers["Authorization"], iuserservice))
+                return new HttpError(HttpStatusCode.Forbidden, "Invalid token");
+
             if (request.Id?.Length != 24) return new HttpError(HttpStatusCode.BadRequest, "Bad Request");
             var result = iproductservice.DeleteProduct(request.Id);
-            if (!result.Success)
-            {
-                return StatusCode(result);
-            }
-            return null;
+            return !result.Success ? StatusCode(result) : null;
         }
 
         public object Put(UpdateProduct request)
         {
+            if (Request.Headers["Authorization"] == null || !JsonWebToken.Decode(Request.Headers["Authorization"], iuserservice))
+                return new HttpError(HttpStatusCode.Forbidden, "Invalid token");
+
             if (request.Id?.Length != 24) return new HttpError(HttpStatusCode.BadRequest, "Bad Request");
             var result = iproductservice.UpdateProduct(request);
-            if (!result.Success)
-            {
-                return StatusCode(result);
-            }
-            return null;
+            return !result.Success ? StatusCode(result) : null;
         }
 
         #endregion
@@ -247,9 +232,9 @@ namespace MongoStack.ServiceInterface
         {
             if (result.Message.Contains("timeout"))
                 return new HttpError(HttpStatusCode.RequestTimeout, "RequestTimeout");
-            else if(result.Message.Contains("not match"))
-                return new HttpError(HttpStatusCode.InternalServerError, "Data missmatch");
-            else if (result.Message.Length == 0 && result.Success == false)
+            if(result.Message.Contains("not match"))
+                return new HttpError(HttpStatusCode.InternalServerError, "Data mismatch");
+            if (result.Message.Length == 0 && result.Success == false)
                 return new HttpError(HttpStatusCode.NotFound, "Not Found");
 
             return new HttpError(HttpStatusCode.BadRequest, "BadRequest");

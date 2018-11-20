@@ -62,6 +62,7 @@ namespace MongoStack.ServiceInterface
 
         public static bool Decode(string token, IUserService iuserservice)
         {
+            token = token.Replace("Bearer ", "");
             return Decode(token, true, iuserservice);
         }
 

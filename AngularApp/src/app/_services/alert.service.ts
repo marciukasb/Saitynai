@@ -28,6 +28,7 @@ export class AlertService {
     }
 
     error(message: string, keepAfterNavigationChange = false) {
+        debugger;
         this.keepAfterNavigationChange = keepAfterNavigationChange;
         this.subject.next({ type: 'error', text: message });
     }

@@ -10,10 +10,16 @@ import { routing }        from './app.routing';
 import { AlertComponent } from './_directives';
 import { AuthGuard } from './_guards';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { AlertService, AuthenticationService, UserService } from './_services';
+import { AlertService, AuthenticationService, UserService, AppConfig, ProductService } from './_services';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
+
+import { APP_INITIALIZER } from '@angular/core';
+
+export function initializeApp(appConfig: AppConfig) {
+    return () => appConfig.load();
+}
 
 @NgModule({
     imports: [
@@ -34,6 +40,13 @@ import { RegisterComponent } from './register';
         AlertService,
         AuthenticationService,
         UserService,
+        ProductService,
+        AppConfig,
+        {
+            provide: APP_INITIALIZER,
+            useFactory: initializeApp,
+            deps: [AppConfig], multi: true
+        },
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
 
