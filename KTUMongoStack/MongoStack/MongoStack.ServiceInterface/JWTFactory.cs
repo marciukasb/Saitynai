@@ -63,46 +63,41 @@ namespace MongoStack.ServiceInterface
         public static bool Decode(string token, IUserService iuserservice)
         {
             token = token.Replace("Bearer ", "");
-            return Decode(token, true, iuserservice);
-        }
-
-        public static bool Decode(string token, bool verify, IUserService iuserservice)
-        {
-            var key = ConfigurationManager.AppSettings["Secret"];
-            var parts = token.Split('.');
-            var header = parts[0];
-            var payload = parts[1];
-            byte[] crypto = Base64UrlDecode(parts[2]);
-
-            var headerJson = Encoding.UTF8.GetString(Base64UrlDecode(header));
-            var headerData = JObject.Parse(headerJson);
-            var payloadJson = Encoding.UTF8.GetString(Base64UrlDecode(payload));
-            var payloadData = JObject.Parse(payloadJson);
-
-            var payloadObject = payloadData.ToObject<User>();
-            var userFromDb = iuserservice.GetUserByUsername(payloadObject.Username);
-
-            if (payloadObject.Username != userFromDb.Entity.Username)
+            var helper = new DataHelper();
+            try
             {
-                return false;
-            }
-            if (verify)
-            {
+                var key = ConfigurationManager.AppSettings["Secret"];
+                var parts = token.Split('.');
+                var header = parts[0];
+                var payload = parts[1];
+                var crypto = Base64UrlDecode(parts[2]);
+
+                var headerJson = Encoding.UTF8.GetString(Base64UrlDecode(header));
+                var headerData = JObject.Parse(headerJson);
+                var payloadJson = Encoding.UTF8.GetString(Base64UrlDecode(payload));
+                var payloadData = JObject.Parse(payloadJson);
+
+                var payloadObject = payloadData.ToObject<User>();
+                var userFromDb = iuserservice.GetUserByUsername(payloadObject.Username);
+                if (payloadObject.Username != userFromDb.Entity.Username || helper.MD5Hash(payloadObject.Password) != userFromDb.Entity.Password)
+                {
+                    return false;
+                }
+
                 var bytesToSign = Encoding.UTF8.GetBytes(string.Concat(header, ".", payload));
                 var keyBytes = Encoding.UTF8.GetBytes(key);
-                var algorithm = (string)headerData["alg"];
+                var algorithm = (string) headerData["alg"];
 
                 var signature = HashAlgorithms[GetHashAlgorithm(algorithm)](keyBytes, bytesToSign);
                 var decodedCrypto = Convert.ToBase64String(crypto);
                 var decodedSignature = Convert.ToBase64String(signature);
 
-                if (decodedCrypto != decodedSignature)
-                {
-                    return false;
-                }
+                return decodedCrypto == decodedSignature;
             }
-
-            return true;
+            catch
+            {
+                return false;
+            }
         }
 
         private static JwtHashAlgorithm GetHashAlgorithm(string algorithm)
