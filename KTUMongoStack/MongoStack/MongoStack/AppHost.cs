@@ -10,7 +10,6 @@ using ServiceStack.Configuration;
 using ServiceStack.ServiceInterface.Validation;
 using ServiceStack.FluentValidation;
 using MongoStack.Core.DTOs;
-using MongoDB.Bson;
 using MongoStack.ServiceInterface.Services;
 
 namespace MongoStack
@@ -45,7 +44,7 @@ namespace MongoStack
     {
         public ProductValidator()
         {
-            RuleFor(x => x.Name).NotEmpty().WithErrorCode("BadRequest"); ;
+            RuleFor(x => x.Name).NotEmpty().WithErrorCode("BadRequest");
         }
     }
     
@@ -57,5 +56,3 @@ namespace MongoStack
         }
     }
 }
-
-

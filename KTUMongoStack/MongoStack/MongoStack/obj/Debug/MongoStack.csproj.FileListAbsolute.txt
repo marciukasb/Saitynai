@@ -182,7 +182,6 @@ C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack\bin\Mon
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack\bin\MongoStack.pdb
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack\bin\Antlr3.Runtime.dll
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack\bin\Autofac.dll
-C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack\bin\AutoMapper.dll
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack\bin\DnsClient.dll
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack\bin\dotless.Core.dll
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack\bin\DotNetOpenAuth.dll
@@ -239,7 +238,6 @@ C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack\bin\Mon
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack\bin\MongoStack.ServiceInterface.dll.config
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack\bin\Antlr3.Runtime.pdb
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack\bin\Autofac.xml
-C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack\bin\AutoMapper.xml
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack\bin\DnsClient.xml
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack\bin\dotless.Core.pdb
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack\bin\DotNetOpenAuth.xml

@@ -20,4 +20,18 @@ export class HomeComponent implements OnInit {
     deleteProduct(id : string){
         this.productService.DeleteProduct(id).subscribe(() => { this.products = this.products.filter(obj => obj.Id != id)});
     }
+
+    copyMessage(val: string){
+        let selBox = document.createElement('textarea');
+        selBox.style.position = 'fixed';
+        selBox.style.left = '0';
+        selBox.style.top = '0';
+        selBox.style.opacity = '0';
+        selBox.value = `Bearer ${this.currentUser.Token}`;
+        document.body.appendChild(selBox);
+        selBox.focus();
+        selBox.select();
+        document.execCommand('copy');
+        document.body.removeChild(selBox);
+      }
 }
