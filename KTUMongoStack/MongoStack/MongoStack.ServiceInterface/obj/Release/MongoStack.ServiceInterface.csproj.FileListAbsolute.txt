@@ -45,9 +45,7 @@ C:\Users\Martynas\Documents\pnamas\KTUMongoStack\MongoStack\MongoStack.ServiceIn
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\MongoStack.ServiceInterface.dll.config
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\MongoStack.ServiceInterface.dll
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\MongoStack.ServiceInterface.pdb
-C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\AutoMapper.dll
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\DnsClient.dll
-C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\EASendMail45.dll
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\Microsoft.IdentityModel.Logging.dll
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\Microsoft.IdentityModel.Tokens.dll
@@ -58,7 +56,6 @@ C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.Service
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\MongoStack.Core.dll
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\Mono.Data.Sqlite.dll
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\Newtonsoft.Json.dll
-C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\NLog.dll
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\ServiceStack.Common.dll
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\ServiceStack.dll
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\ServiceStack.Interfaces.dll
@@ -73,7 +70,6 @@ C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.Service
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\MongoStack.Core.pdb
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\MongoStack.Core.dll.config
-C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\AutoMapper.xml
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\DnsClient.xml
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\Microsoft.IdentityModel.JsonWebTokens.pdb
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\Microsoft.IdentityModel.JsonWebTokens.xml
@@ -86,7 +82,6 @@ C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.Service
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\MongoDB.Driver.Core.xml
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\MongoDB.Driver.Legacy.xml
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\Newtonsoft.Json.xml
-C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\NLog.xml
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\ServiceStack.xml
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\ServiceStack.Common.xml
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.ServiceInterface\bin\Release\ServiceStack.Interfaces.xml

@@ -5,7 +5,7 @@ using System.Web.Routing;
 
 namespace MongoStack
 {
-    public class Global : System.Web.HttpApplication
+    public partial class Global : System.Web.HttpApplication
     {
         protected void Application_Start()
         {

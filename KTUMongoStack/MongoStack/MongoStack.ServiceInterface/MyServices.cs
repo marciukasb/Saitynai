@@ -1,9 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net;
 using MongoStack.Core;
 using MongoStack.Core.DTOs;
 using MongoStack.Core.Entities;
 using MongoStack.ServiceInterface.Interfaces;
+using ServiceStack.Common;
 using ServiceStack.Common.Web;
 using ServiceStack.ServiceInterface;
 
@@ -28,7 +30,8 @@ namespace MongoStack.ServiceInterface
 
         public object Post(Authenticate request)
         {
-            var jwt = JsonWebToken.Encode(request, JwtHashAlgorithm.HS512);
+            var obj = new TokenData { Username = request.Username, Expires = DateTime.Now.AddHours(1) };
+            var jwt = JsonWebToken.Encode(obj, JwtHashAlgorithm.HS512);
             var result = iuserservice.GetUserByUsername(request.Username);
 
             if (!result.Success && string.IsNullOrEmpty(result.Message)) return new HttpError(HttpStatusCode.Forbidden, "Username does not exist");
@@ -64,7 +67,7 @@ namespace MongoStack.ServiceInterface
                     });
                     if (!user.Success) return new HttpError(HttpStatusCode.InternalServerError, "An error occurred");
 
-                    var obj = new TokenData {Username = request.UserName, Password = request.Password};
+                    var obj = new TokenData { Username = request.UserName, Expires = DateTime.Now.AddHours(1) };
                     var jwt = JsonWebToken.Encode(obj, JwtHashAlgorithm.HS512);
                     return new AuthResponse {Token = jwt};
                 }

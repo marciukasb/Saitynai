@@ -70,9 +70,13 @@ namespace MongoStack.ServiceInterface
                 var payloadJson = Encoding.UTF8.GetString(Base64UrlDecode(payload));
                 var payloadData = JObject.Parse(payloadJson);
 
-                var payloadObject = payloadData.ToObject<User>();
+                var payloadObject = payloadData.ToObject<TokenData>();
                 var userFromDb = iuserservice.GetUserByUsername(payloadObject.Username);
-                if (payloadObject.Username != userFromDb.Entity.Username || helper.MD5Hash(payloadObject.Password) != userFromDb.Entity.Password)
+                if (payloadObject.Username != userFromDb.Entity.Username)
+                {
+                    return false;
+                }
+                if (payloadObject.Expires < DateTime.Now)
                 {
                     return false;
                 }
