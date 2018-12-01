@@ -1,0 +1,25 @@
+<h1>Product</h1>
+<span><a href="create-product"><i class="far fa-plus-square space" ></i>Add new</a></span>
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Price</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products; let i = index">
+        <td scope="row">{{i+1}}</td>
+        <td scope="row">{{product.Name}}</td>
+        <td scope="row">{{product.Brand}}</td>
+        <td scope="row">{{product.price}}</td>
+        <td scope="row"><i class="far fa-edit cli" (click)="edit(product.Id)"></i></td>
+        <td scope="row"><i class="far fa-trash-alt cli" (click)="delete(product.Id)"></i></td>
+      </tr>
+    </tbody>
+  </table>

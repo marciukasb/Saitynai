@@ -1,28 +1,33 @@
 ﻿import { Component, OnInit } from '@angular/core';
 
 import { User, Product } from '../_models';
-import { UserService, ProductService } from '../_services';
+import { ProductService, AuthenticationService } from '../_services';
 
-@Component({templateUrl: 'home.component.html'})
+@Component({templateUrl: 'home.component.html', 
+styles: ['h1 { font-weight: normal; }']
+})
 export class HomeComponent implements OnInit {
     currentUser: User;
     products: Product[] = [];
 
-    constructor(private userService: UserService, private productService: ProductService) {
-        debugger;
+    constructor(private authenticationService: AuthenticationService, private productService: ProductService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     ngOnInit() {
+
+        if(!this.currentUser) {
+            this.authenticationService.logout();
+        }
         this.productService.GetAllProducts().subscribe(products => { this.products = products; });
     }
 
     deleteProduct(id : string){
-        this.productService.DeleteProduct(id).subscribe(() => { this.products = this.products.filter(obj => obj.Id != id)});
+        this.productService.DeleteProduct(id).subscribe(() => { this.products = this.products.filter(obj => obj.Id !== id)});
     }
 
     copyMessage(val: string){
-        let selBox = document.createElement('textarea');
+        const selBox = document.createElement('textarea');
         selBox.style.position = 'fixed';
         selBox.style.left = '0';
         selBox.style.top = '0';

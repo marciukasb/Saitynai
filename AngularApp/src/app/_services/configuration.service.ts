@@ -7,8 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
  export class AppConfig {
     private jsonFile=`./assets/config.${environment.name}.json`;
-    static settings: IAppConfig;
-    static httpOptions: any;
+    public static settings: IAppConfig;
+    public static httpOptions: any;
 
     constructor(private http: HttpClient){}
 

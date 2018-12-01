@@ -10,6 +10,9 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AlertService, AuthenticationService, UserService, AppConfig, ProductService } from './_services';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
+import { ProductComponent } from './product';
+import { CreateProductComponent } from './createProduct';
+
 import { RegisterComponent } from './register';
 import { APP_INITIALIZER } from '@angular/core';
 
@@ -29,7 +32,9 @@ export function initializeApp(appConfig: AppConfig) {
         AlertComponent,
         HomeComponent,
         LoginComponent,
-        RegisterComponent
+        RegisterComponent,
+        ProductComponent,
+        CreateProductComponent
     ],
     providers: [
         AuthGuard,

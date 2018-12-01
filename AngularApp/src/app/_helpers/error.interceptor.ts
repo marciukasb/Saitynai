@@ -16,6 +16,9 @@ export class ErrorInterceptor implements HttpInterceptor {
                 this.authenticationService.logout();
                 location.reload(true);
             }
+            if (err.status === 0) {
+                err.statusText = "Could not get a response";
+            }
             debugger;
             const error = err.statusText;
             return throwError(error);
