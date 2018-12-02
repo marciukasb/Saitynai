@@ -40,7 +40,7 @@ namespace MongoStack.ServiceInterface
             var passEncrypt = Helper.MD5Hash(request.Password);
             if (result.Entity.Password == passEncrypt)
             {
-                return new AuthResponse {Token = jwt, Role = result.Entity.Role};
+                return new AuthResponse {Token = jwt, Admin = result.Entity.Admin };
             }
 
             return new HttpError(HttpStatusCode.Forbidden, "Incorrect password");
@@ -67,7 +67,7 @@ namespace MongoStack.ServiceInterface
                     });
                     if (!user.Success) return new HttpError(HttpStatusCode.InternalServerError, "An error occurred");
 
-                    var obj = new TokenData { Username = request.UserName, Expires = DateTime.Now.AddHours(1) };
+                    var obj = new TokenData { Username = request.UserName, Expires = DateTime.Now.AddHours(1), Admin = result.Entity.Admin };
                     var jwt = JsonWebToken.Encode(obj, JwtHashAlgorithm.HS512);
                     return new AuthResponse {Token = jwt};
                 }

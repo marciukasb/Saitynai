@@ -6,18 +6,16 @@ import { AppConfig } from '../_services/configuration.service'
 
 @Injectable()
 export class AuthenticationService {
-    private user: User;
+    public user: User;
     constructor(private http: HttpClient) { }
 
     login(username: string, password: string) {
         debugger;
         return this.http.post<User>(`${AppConfig.settings.hostname}/user/authenticate`, { Username: username, Password: password })
             .pipe(map(user => {
-                debugger;
-                this.user = new User(username, user.Token);
-                // login successful if there's a jwt token in the response
                 if (user.Token) {
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    debugger;
+                    this.user = new User(username, user.Token, user.Admin);
                     localStorage.setItem('currentUser', JSON.stringify(this.user));
                 }
 
@@ -26,7 +24,6 @@ export class AuthenticationService {
     }
 
     logout() {
-        // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
     }
 }

@@ -5,7 +5,7 @@ namespace MongoStack.Core.Entities
 {
     public class User : Entity
     {
-        public string Role { get; set; }
+        public bool Admin { get; set; }
         [Required]
         public string Username { get; set; }
         [Required]
@@ -30,6 +30,7 @@ namespace MongoStack.Core.Entities
     {
         public string Username { get; set; }
         public DateTime Expires { get; set; }
+        public bool Admin { get; set; }
     }
 
 }

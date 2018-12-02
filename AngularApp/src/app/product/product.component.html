@@ -8,8 +8,8 @@
         <th scope="col">Name</th>
         <th scope="col">Brand</th>
         <th scope="col">Price</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Delete</th>
+        <th *ngIf="currentUser.Admin" scope="col">Edit</th>
+        <th *ngIf="currentUser.Admin" scope="col">Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -18,8 +18,8 @@
         <td scope="row">{{product.Name}}</td>
         <td scope="row">{{product.Brand}}</td>
         <td scope="row">{{product.price}}</td>
-        <td scope="row"><i class="far fa-edit cli" (click)="edit(product.Id)"></i></td>
-        <td scope="row"><i class="far fa-trash-alt cli" (click)="delete(product.Id)"></i></td>
+        <td *ngIf="currentUser.Admin" scope="row"><i class="far fa-edit cli" (click)="edit(product.Id)"></i></td>
+        <td *ngIf="currentUser.Admin" scope="row"><i class="far fa-trash-alt cli" (click)="delete(product.Id)"></i></td>
       </tr>
     </tbody>
   </table>

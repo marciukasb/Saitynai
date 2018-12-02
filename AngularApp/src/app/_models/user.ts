@@ -5,9 +5,11 @@
     FirstName: string;
     LastName: string;
     Token: string;
+    Admin: boolean;
 
-    constructor(username : string, token:string){
+    constructor(username : string, token:string, admin: boolean){
         this.Username = username;
         this.Token = token;
+        this.Admin = admin;
     }
 }

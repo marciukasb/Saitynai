@@ -5,7 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
 import { AlertComponent } from './_directives';
-import { AuthGuard } from './_guards';
+import { AuthGuard, AdminGuard } from './_guards';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AlertService, AuthenticationService, UserService, AppConfig, ProductService } from './_services';
 import { HomeComponent } from './home';
@@ -38,6 +38,7 @@ export function initializeApp(appConfig: AppConfig) {
     ],
     providers: [
         AuthGuard,
+        AdminGuard,
         AlertService,
         AuthenticationService,
         UserService,

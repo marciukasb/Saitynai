@@ -144,3 +144,4 @@ C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.Core\ob
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.Core\obj\Debug\MongoStack.Core.csproj.CopyComplete
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.Core\obj\Debug\MongoStack.Core.dll
 C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.Core\obj\Debug\MongoStack.Core.pdb
+C:\Users\Martynas\Documents\Saitynai\KTUMongoStack\MongoStack\MongoStack.Core\obj\Debug\MongoStack.Core.csprojAssemblyReference.cache

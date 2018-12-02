@@ -17,6 +17,7 @@ export class ProductComponent implements OnInit {
         if(!this.currentUser) {
             this.authenticationService.logout();
         }
+        localStorage.setItem("perviousUrl", "product")
         this.productService.GetAllProducts().subscribe(products => { this.products = products; });
     }
 

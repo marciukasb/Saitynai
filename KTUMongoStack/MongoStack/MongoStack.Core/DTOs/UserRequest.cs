@@ -4,7 +4,7 @@ namespace MongoStack.Core.DTOs
 {
     public class AuthResponse
     {
-        public string Role { get; set; }
+        public bool Admin { get; set; }
         public string Token { get; set; }
     }
 
