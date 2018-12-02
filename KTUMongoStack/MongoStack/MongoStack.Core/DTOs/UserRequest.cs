@@ -15,6 +15,11 @@ namespace MongoStack.Core.DTOs
         public string Password { get; set; }
     }
 
+    [Route("/user/authorize", "GET")]
+    public class Authorize
+    {
+    }
+
     [Route("/user/register", "POST")]
     public class CreateUser
     {

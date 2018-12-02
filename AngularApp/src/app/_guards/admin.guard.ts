@@ -1,25 +1,14 @@
 ﻿import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { User } from '../_models';
-
-
+import { AlertService, AuthenticationService, ProductService } from '../_services';
 @Injectable()
 export class AdminGuard implements CanActivate {
     currentUser: User;
-    constructor(private router: Router) { }
+    constructor(private router: Router, private authenticationService:AuthenticationService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (localStorage.getItem('currentUser')) {
-            this.currentUser = <User>JSON.parse(localStorage.getItem('currentUser'));
-            if(this.currentUser.Admin == true){
-                // logged in so return true
-                return true;
-            }
-        }
-        let url = localStorage.getItem("perviousUrl");
-        localStorage.removeItem("perviousUrl");
-        this.router.navigate([url], { queryParams: { returnUrl: state.url }});
-
+        this.authenticationService.Authorize();
         return false;
     }
 }

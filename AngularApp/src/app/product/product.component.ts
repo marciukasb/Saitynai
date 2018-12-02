@@ -13,7 +13,6 @@ export class ProductComponent implements OnInit {
     }
 
     ngOnInit() {
-      //  debugger;
         if(!this.currentUser) {
             this.authenticationService.logout();
         }

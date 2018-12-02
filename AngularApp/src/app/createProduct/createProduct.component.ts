@@ -2,10 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AlertService, UserService, ProductService } from '../_services';
+import * as jwt_decode from "jwt-decode";
+
+import { AlertService, AuthenticationService, ProductService } from '../_services';
+import { User } from '../_models';
 
 @Component({templateUrl: 'createProduct.component.html'})
 export class CreateProductComponent implements OnInit {
+    currentUser: User;
     createForm: FormGroup;
     price: number;
     loading = false;
@@ -15,9 +19,11 @@ export class CreateProductComponent implements OnInit {
         private formBuilder: FormBuilder,
         private router: Router,
         private productService: ProductService,
+        private authenticationService: AuthenticationService,
         private alertService: AlertService) { }
 
     ngOnInit() {
+      
         this.createForm = this.formBuilder.group({
             name: ['', Validators.required],
             brand: ['', Validators.required],
@@ -51,4 +57,14 @@ export class CreateProductComponent implements OnInit {
     replace(){
         this.price = this.createForm.value.price.replace(",", ".");
     }
+
+    getDecodedAccessToken(token: string): any {
+        debugger;
+        try{
+            return jwt_decode(token);
+        }
+        catch(Error){
+            return null;
+        }
+      }
 }

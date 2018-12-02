@@ -18,8 +18,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
                 AppConfig.settings = response;
                 resolve();
             }).catch((response: any) => {
-                reject(`Couldnot load file '${this.jsonFile}': ${JSON.stringify(response)} `);
+               reject(`Couldnot load file '${this.jsonFile}': ${JSON.stringify(response)} `);
             });
         });
     }
+    
 }

@@ -46,6 +46,13 @@ namespace MongoStack.ServiceInterface
             return new HttpError(HttpStatusCode.Forbidden, "Incorrect password");
 
         }
+        public object Get(Authorize request)
+        {
+            if (Request.Headers["Authorization"] == null || !JsonWebToken.DecodeAdminToken(Request.Headers["Authorization"], iuserservice))
+                return new HttpError(HttpStatusCode.BadRequest, "Invalid token");
+
+            return new AuthResponse();
+        }
 
         public object Post(CreateUser request)
         {

@@ -97,6 +97,56 @@ namespace MongoStack.ServiceInterface
             }
         }
 
+        
+
+
+        public static bool DecodeAdminToken(string token, IUserService iuserservice)
+        {
+            token = token.Replace("Bearer ", "");
+            var helper = new DataHelper();
+            try
+            {
+                var key = ConfigurationManager.AppSettings["Secret"];
+                var parts = token.Split('.');
+                var header = parts[0];
+                var payload = parts[1];
+                var crypto = Base64UrlDecode(parts[2]);
+
+                var headerJson = Encoding.UTF8.GetString(Base64UrlDecode(header));
+                var headerData = JObject.Parse(headerJson);
+                var payloadJson = Encoding.UTF8.GetString(Base64UrlDecode(payload));
+                var payloadData = JObject.Parse(payloadJson);
+
+                var payloadObject = payloadData.ToObject<TokenData>();
+                var userFromDb = iuserservice.GetUserByUsername(payloadObject.Username);
+                if (payloadObject.Username != userFromDb.Entity.Username)
+                {
+                    return false;
+                }
+                if (payloadObject.Expires < DateTime.Now)
+                {
+                    return false;
+                }
+                if (!userFromDb.Entity.Admin)
+                {
+                    return false;
+                }
+
+                var bytesToSign = Encoding.UTF8.GetBytes(string.Concat(header, ".", payload));
+                var keyBytes = Encoding.UTF8.GetBytes(key);
+                var algorithm = (string)headerData["alg"];
+
+                var signature = HashAlgorithms[GetHashAlgorithm(algorithm)](keyBytes, bytesToSign);
+                var decodedCrypto = Convert.ToBase64String(crypto);
+                var decodedSignature = Convert.ToBase64String(signature);
+
+                return decodedCrypto == decodedSignature;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         private static JwtHashAlgorithm GetHashAlgorithm(string algorithm)
         {
             switch (algorithm)
