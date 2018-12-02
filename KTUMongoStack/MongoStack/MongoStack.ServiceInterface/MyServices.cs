@@ -51,7 +51,7 @@ namespace MongoStack.ServiceInterface
             if (Request.Headers["Authorization"] == null || !JsonWebToken.DecodeAdminToken(Request.Headers["Authorization"], iuserservice))
                 return new HttpError(HttpStatusCode.BadRequest, "Invalid token");
 
-            return new AuthResponse();
+            return new AuthResponse {Admin = true};
         }
 
         public object Post(CreateUser request)

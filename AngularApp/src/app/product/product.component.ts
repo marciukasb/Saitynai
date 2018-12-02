@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { User, Product } from '../_models';
-import { UserService, ProductService, AuthenticationService } from '../_services';
+import { ProductService, AuthenticationService } from '../_services';
 
 @Component({templateUrl: 'product.component.html'})
 export class ProductComponent implements OnInit {
@@ -9,13 +9,11 @@ export class ProductComponent implements OnInit {
     products: Product[] = [];
 
     constructor(private authenticationService: AuthenticationService, private productService: ProductService) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      //  this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     ngOnInit() {
-        if(!this.currentUser) {
-            this.authenticationService.logout();
-        }
+        this.authenticationService.GetRights().subscribe(res => this.currentUser.Admin = res.Admin);
         localStorage.setItem("perviousUrl", "product")
         this.productService.GetAllProducts().subscribe(products => { this.products = products; });
     }

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 
 import { AppConfig } from '../_services/configuration.service';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthenticationService {
@@ -45,5 +46,13 @@ export class AuthenticationService {
                     return false;
                 }
             );
+    }
+
+    GetRights() : Observable<User>{
+        return this.http.get<User>(`${AppConfig.settings.hostname}/user/authorize`).pipe(map(result => {
+            var test = result;
+            debugger;
+             return result;
+        }));
     }
 }
