@@ -9,7 +9,8 @@ export class ProductComponent implements OnInit {
     products: Product[] = [];
 
     constructor(private authenticationService: AuthenticationService, private productService: ProductService) {
-      //  this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.currentUser.Admin = false;
     }
 
     ngOnInit() {

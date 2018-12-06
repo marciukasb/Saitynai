@@ -23,7 +23,6 @@ export class CreateProductComponent implements OnInit {
         private alertService: AlertService) { }
 
     ngOnInit() {
-      
         this.createForm = this.formBuilder.group({
             name: ['', Validators.required],
             brand: ['', Validators.required],
