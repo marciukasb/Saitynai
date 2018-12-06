@@ -9,6 +9,11 @@ import { Product } from '../_models';
 export class ProductService {
     constructor(private http: HttpClient) { }
 
+    GetProduct(id : string) : Rx.Observable<Product> {
+        debugger;
+        return this.http.get<Product>(`${AppConfig.settings.hostname}/product/${id}`);
+    }
+
     GetAllProducts() : Rx.Observable<Product[]> {
         return this.http.get<Product[]>(`${AppConfig.settings.hostname}/product/`);
     }
@@ -19,5 +24,10 @@ export class ProductService {
 
     CreateProduct(product : Product) : Rx.Observable<Product> {
         return this.http.post<Product>(`${AppConfig.settings.hostname}/product/`, product);
+    }
+
+    UpdateProduct(product : Product) : Rx.Observable<Product> {
+        debugger;
+        return this.http.put<Product>(`${AppConfig.settings.hostname}/product/${product.Id}`, product);
     }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { User, Product } from '../_models';
 import { ProductService, AuthenticationService } from '../_services';
@@ -8,7 +9,7 @@ export class ProductComponent implements OnInit {
     currentUser: User;
     products: Product[] = [];
 
-    constructor(private authenticationService: AuthenticationService, private productService: ProductService) {
+    constructor(private authenticationService: AuthenticationService, private productService: ProductService, private router: Router) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.currentUser.Admin = false;
     }
@@ -24,11 +25,11 @@ export class ProductComponent implements OnInit {
     }
 
     delete(id : string){
-        debugger;
-    //    this.productService.DeleteProduct(id).subscribe(() => { this.products = this.products.filter(obj => obj.Id !== id)});
+        this.productService.DeleteProduct(id).subscribe(() => { this.products = this.products.filter(obj => obj.Id !== id)});
     }
 
-    edit(id : string) {
+    openEdit(id : string) {
         debugger;
+        this.router.navigate([`edit-product/${id}`]);
     }
 }

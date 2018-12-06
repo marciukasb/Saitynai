@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using System.Collections.Generic;
+using MongoDB.Bson;
 using MongoStack.Core.Entities;
 using ServiceStack.ServiceHost;
 namespace MongoStack.Core.DTOs
@@ -35,7 +36,10 @@ namespace MongoStack.Core.DTOs
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        public string Brand { get; set; }
         public string Description { get; set; }
+        public double Price { get; set; }
+        public List<string> Images { get; set; }
     }
     public class EmptyResponse { }
 }

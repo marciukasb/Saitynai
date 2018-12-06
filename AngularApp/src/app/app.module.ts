@@ -12,6 +12,7 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { ProductComponent } from './product';
 import { CreateProductComponent } from './createProduct';
+import { EditProductComponent } from './editProduct';
 
 import { RegisterComponent } from './register';
 import { APP_INITIALIZER } from '@angular/core';
@@ -34,7 +35,8 @@ export function initializeApp(appConfig: AppConfig) {
         LoginComponent,
         RegisterComponent,
         ProductComponent,
-        CreateProductComponent
+        CreateProductComponent,
+        EditProductComponent
     ],
     providers: [
         AuthGuard,

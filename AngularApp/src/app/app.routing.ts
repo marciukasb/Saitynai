@@ -1,8 +1,8 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
-
 import { HomeComponent } from './home';
 import { ProductComponent } from './product';
 import { CreateProductComponent } from './createProduct';
+import { EditProductComponent } from './editProduct';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { AuthGuard, AdminGuard } from './_guards';
@@ -13,7 +13,7 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'product', component: ProductComponent, canActivate: [AuthGuard] },
     { path: 'create-product', component: CreateProductComponent, canActivate: [AdminGuard]  },
-
+    { path: 'edit-product/:id', component: EditProductComponent, canActivate: [AdminGuard]  },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

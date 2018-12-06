@@ -1,29 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import * as jwt_decode from "jwt-decode";
 
 import { AlertService, AuthenticationService, ProductService } from '../_services';
-import { User } from '../_models';
+import { User, Product } from '../_models';
 
-@Component({templateUrl: 'createProduct.component.html'})
-export class CreateProductComponent implements OnInit {
+@Component({templateUrl: 'editProduct.component.html'})
+export class EditProductComponent implements OnInit {
     currentUser: User;
     createForm: FormGroup;
     Price: number;
     loading = false;
     submitted = false;
+    product: Product;
 
     constructor(
         private formBuilder: FormBuilder,
-        private router: Router,
         private productService: ProductService,
-        private authenticationService: AuthenticationService,
-        private alertService: AlertService) { }
+        private route: ActivatedRoute,
+        private alertService: AlertService,
+        private router: Router) { }
 
     ngOnInit() {
+        this.productService.GetProduct(this.route.snapshot.paramMap.get('id')).subscribe(product => 
+            { 
+                debugger;
+                this.Price = product.Price;
+                this.createForm.setValue({
+                    Id: this.route.snapshot.paramMap.get('id'),
+                    Name: product.Name,
+                    Brand: product.Brand,
+                    Price: product.Price
+                })
+            });
         this.createForm = this.formBuilder.group({
+            Id: [],
             Name: ['', Validators.required],
             Brand: ['', Validators.required],
             Price: ['', Validators.required]
@@ -40,11 +53,11 @@ export class CreateProductComponent implements OnInit {
         }
 
         this.loading = true;
-        this.productService.CreateProduct(this.createForm.value)
+        this.productService.UpdateProduct(this.createForm.value)
             .pipe(first())
             .subscribe(
                 () => {
-                    this.alertService.success('Created successfuly', true);
+                    this.alertService.success('Updated successfuly', true);
                     this.router.navigate(['/product']);
                 },
                 error => {
