@@ -8,6 +8,7 @@
     cursor:pointer;
 }
 
+
 @media screen and (max-width: 600px) {
     th,td{
       font-size: 12px;

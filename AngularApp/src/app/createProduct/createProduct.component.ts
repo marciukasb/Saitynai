@@ -11,6 +11,7 @@ import { User } from '../_models';
 export class CreateProductComponent implements OnInit {
     currentUser: User;
     createForm: FormGroup;
+    imagePath = "https://store-cdn.arduino.cc/usa/catalog/product/cache/1/image/520x330/604a3538c15e081937dbfbd20aa60aad/a/0/a000066_featured_4.jpg";
     Price: number;
     loading = false;
     submitted = false;
