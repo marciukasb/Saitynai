@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using MongoDB.Bson;
-using MongoStack.Core.Entities;
-using ServiceStack.ServiceHost;
+﻿using ServiceStack.ServiceHost;
 namespace MongoStack.Core.DTOs
 {
     [Route("/product/{Id}", "GET")]
@@ -14,13 +11,12 @@ namespace MongoStack.Core.DTOs
     public class GetProducts  { } 
 
     [Route("/product/", "POST")]
-   // [Route("/product/{Id}", "POST")]
     public class AddProduct : IReturn<EmptyResponse>
     {
-     //   public string Id { get; set; }
         public string Name { get; set; }
         public string Brand { get; set; }
         public double Price { get; set; }
+        public string Image { get; set; }
     }
 
     [Route("/product/", "DELETE")]
@@ -39,7 +35,7 @@ namespace MongoStack.Core.DTOs
         public string Brand { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
-        public List<string> Images { get; set; }
+        public string Image { get; set; }
     }
     public class EmptyResponse { }
 }

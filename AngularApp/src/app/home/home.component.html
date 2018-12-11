@@ -3,16 +3,9 @@
 white-space: -moz-pre-wrap; /* Firefox */    
 white-space: -pre-wrap;     /* Opera <7 */   
 white-space: -o-pre-wrap;   /* Opera 7 */    
-word-wrap: break-word;">Your token is: Bearer  {{currentUser.Token}}</h1>
+word-wrap: break-word;">Your token is: Bearer  {{currentToken}}</h1>
 <div style="padding-bottom:20px">
     <button (click)="copyMessage()" value="click to copy"  >Copy token</button>
 </div>
-<p>You're logged in</p>
-<h3>Products:</h3>
-<ul>
-    <li *ngFor="let product of products">
-        {{product.Id}} {{product.Name}}
-        - <a (click)="deleteProduct(product.Id)" class="text-danger">Delete</a>
-    </li>
-</ul>
+
 <p><a [routerLink]="['/login']">Logout</a></p>

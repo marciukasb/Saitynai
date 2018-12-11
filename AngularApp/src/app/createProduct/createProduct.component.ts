@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import * as jwt_decode from "jwt-decode";
+
 
 import { AlertService, AuthenticationService, ProductService } from '../_services';
 import { User } from '../_models';
@@ -11,7 +11,7 @@ import { User } from '../_models';
 export class CreateProductComponent implements OnInit {
     currentUser: User;
     createForm: FormGroup;
-    imagePath = "https://store-cdn.arduino.cc/usa/catalog/product/cache/1/image/520x330/604a3538c15e081937dbfbd20aa60aad/a/0/a000066_featured_4.jpg";
+    ImageUrl: string;// = "https://store-cdn.arduino.cc/usa/catalog/product/cache/1/image/520x330/604a3538c15e081937dbfbd20aa60aad/a/0/a000066_featured_4.jpg";
     Price: number;
     loading = false;
     submitted = false;
@@ -27,7 +27,8 @@ export class CreateProductComponent implements OnInit {
         this.createForm = this.formBuilder.group({
             Name: ['', Validators.required],
             Brand: ['', Validators.required],
-            Price: ['', Validators.required]
+            Price: ['', Validators.required],
+            Image: []
         });
     }
 
@@ -58,13 +59,11 @@ export class CreateProductComponent implements OnInit {
         this.Price = this.createForm.value.Price.replace(",", ".");
     }
 
-    getDecodedAccessToken(token: string): any {
-        debugger;
-        try{
-            return jwt_decode(token);
-        }
-        catch(Error){
-            return null;
-        }
-      }
+    url() {
+       var test = this.ImageUrl ;
+       debugger;
+
+    }
+
+    
 }

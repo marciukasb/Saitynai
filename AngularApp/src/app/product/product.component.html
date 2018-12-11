@@ -19,7 +19,31 @@
         <td scope="row">{{product.Brand}}</td>
         <td scope="row">{{product.Price}}</td>
         <td *ngIf="currentUser.Admin" scope="row"><i class="far fa-edit cli" (click)="openEdit(product.Id)"></i></td>
-        <td *ngIf="currentUser.Admin" scope="row"><i class="far fa-trash-alt cli" (click)="delete(product.Id)"></i></td>
+        <td *ngIf="currentUser.Admin" scope="row"><i class="far fa-trash-alt cli" (click)="openModal('custom-modal-1')"></i></td>
       </tr>
     </tbody>
   </table>
+
+
+  <modal id="custom-modal-1">
+    <h1>A Custom Modal!</h1>
+    Home page text: 
+    
+    <button (click)="closeModal('custom-modal-1');">Close</button>
+  </modal>
+
+
+<!-- 
+  <modal id="custom-modal-1">
+    <div class="modal">
+        <div class="modal-body">
+            <h1>Delete product?</h1>
+            <p>
+                Are you sure you want to delete this product? />
+            </p>
+            <button (click)="delete('custom-modal-1')">Yes</button>
+            <button (click)="closeModal('custom-modal-1');">No</button>
+        </div>
+    </div>
+    <div class="modal-background"></div>
+</modal> -->

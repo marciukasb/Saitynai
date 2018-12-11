@@ -1,6 +1,6 @@
 ﻿import { Component } from '@angular/core';
 import { User } from '../app/_models';
-
+import './_content/modal.less';
 
 @Component({
     selector: 'app',

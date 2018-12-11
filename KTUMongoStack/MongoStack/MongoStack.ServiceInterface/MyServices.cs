@@ -70,11 +70,13 @@ namespace MongoStack.ServiceInterface
                         Password = passEncrypt,
                         FirstName = request.FirstName,
                         LastName = request.LastName,
-                        Email = request.Email
+                        Email = request.Email,
+                        Admin = false
                     });
                     if (!user.Success) return new HttpError(HttpStatusCode.InternalServerError, "An error occurred");
+                    var result22 = iuserservice.GetUserByUsername(request.UserName);
 
-                    var obj = new TokenData { Username = request.UserName, Expires = DateTime.Now.AddHours(1), Admin = result.Entity.Admin };
+                    var obj = new TokenData { Username = request.UserName, Expires = DateTime.Now.AddHours(1), Admin = result22.Entity.Admin };
                     var jwt = JsonWebToken.Encode(obj, JwtHashAlgorithm.HS512);
                     return new AuthResponse {Token = jwt};
                 }

@@ -3,4 +3,5 @@ export class Product {
     Name: string;
     Brand: string;
     Price: number;
+    Image: string;
 }

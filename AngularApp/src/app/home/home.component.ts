@@ -2,16 +2,19 @@
 
 import { User, Product } from '../_models';
 import { ProductService, AuthenticationService } from '../_services';
+import * as jwt_decode from "jwt-decode";
 
 @Component({templateUrl: 'home.component.html', 
 styles: ['h1 { font-weight: normal; }']
 })
 export class HomeComponent implements OnInit {
-    currentUser: User;
+    currentUser: string;
+    currentToken: string;
     products: Product[] = [];
 
     constructor(private authenticationService: AuthenticationService, private productService: ProductService) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.currentUser = this.getDecodedAccessToken(JSON.parse(localStorage.getItem('currentUser')).Token);
+        this.currentToken = JSON.parse(localStorage.getItem('currentUser')).Token;
     }
 
     ngOnInit() {
@@ -32,11 +35,21 @@ export class HomeComponent implements OnInit {
         selBox.style.left = '0';
         selBox.style.top = '0';
         selBox.style.opacity = '0';
-        selBox.value = `Bearer ${this.currentUser.Token}`;
+        selBox.value = `Bearer ${this.currentToken}`;
         document.body.appendChild(selBox);
         selBox.focus();
         selBox.select();
         document.execCommand('copy');
         document.body.removeChild(selBox);
+      }
+
+      getDecodedAccessToken(token: string): any {
+        debugger;
+        try{
+            return jwt_decode(token);
+        }
+        catch(Error){
+            return null;
+        }
       }
 }

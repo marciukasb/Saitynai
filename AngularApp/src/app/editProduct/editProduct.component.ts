@@ -32,14 +32,16 @@ export class EditProductComponent implements OnInit {
                     Id: this.route.snapshot.paramMap.get('id'),
                     Name: product.Name,
                     Brand: product.Brand,
-                    Price: product.Price
+                    Price: product.Price,
+                    Image: "product.Image"
                 })
             });
         this.createForm = this.formBuilder.group({
             Id: [],
             Name: ['', Validators.required],
             Brand: ['', Validators.required],
-            Price: ['', Validators.required]
+            Price: ['', Validators.required],
+            Image:[]
         });
     }
 
