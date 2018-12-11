@@ -33,7 +33,7 @@ export class EditProductComponent implements OnInit {
                     Name: product.Name,
                     Brand: product.Brand,
                     Price: product.Price,
-                    Image: "product.Image"
+                    Image: product.Image
                 })
             });
         this.createForm = this.formBuilder.group({
