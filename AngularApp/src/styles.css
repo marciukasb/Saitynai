@@ -21,3 +21,18 @@
     }
 }
 
+.modalWindow {
+    width: 30%;
+    position:absolute;
+    background: white;
+    top: 50%;
+    left: 40%;
+  /* //  width:10em;
+    height:10em; */
+    margin-top: -5em; /*set to a negative number 1/2 of your height*/
+    margin-left: -5em; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    border:  2px solid black;
+    z-index:100; 
+}
+

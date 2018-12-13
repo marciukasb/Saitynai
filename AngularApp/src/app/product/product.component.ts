@@ -7,6 +7,8 @@ import { ProductService, AuthenticationService, ModalService } from '../_service
 @Component({templateUrl: 'product.component.html'})
 export class ProductComponent implements OnInit {
     currentUser: User;
+
+    selected: string;
     products: Product[] = [];
 
     constructor(private authenticationService: AuthenticationService, private modalService: ModalService, private productService: ProductService, private router: Router) {
@@ -22,17 +24,23 @@ export class ProductComponent implements OnInit {
     }
 
     delete(id : string){
-        this.productService.DeleteProduct(id).subscribe(() => { this.products = this.products.filter(obj => obj.Id !== id)});
+        this.productService.DeleteProduct(this.selected).subscribe(() => { this.products = this.products.filter(obj => obj.Id !== this.selected)});
         this.modalService.close(id);
     }
 
     openEdit(id : string) {
         debugger;
         this.router.navigate([`edit-product/${id}`]);
+
     }
 
-    openModal(id: string) {
+    openModal(id: string, productId: string) {
         debugger;
+        this.selected = productId;
         this.modalService.open(id);
+    }
+
+    closeModal(id:string) {
+        this.modalService.close(id);
     }
 }
